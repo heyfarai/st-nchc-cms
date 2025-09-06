@@ -1,0 +1,31 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ./"
+
+[build.lifecycle]
+  onPreBuild = "npm install --no-save --platform=linux --arch=x64 sharp"
+
+[build.environment]
+  NODE_VERSION = "20.9.0"
+  NPM_VERSION = "10.9.1"
+  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
+  SHARP_SKIP_PLATFORM_LIBVIPS = "1"
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[functions]
+  node_bundler = "esbuild"
