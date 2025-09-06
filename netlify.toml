@@ -13,6 +13,8 @@
 
 [functions]
   node_bundler = "esbuild"
+  external_node_modules = ["@neondatabase/serverless", "pg-native"]
+  included_files = ["dist/**/*", "src/**/*"]
 
 [[redirects]]
   from = "/admin/*"
@@ -28,6 +30,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
-
-[functions]
-  node_bundler = "esbuild"
