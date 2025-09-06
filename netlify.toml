@@ -1,16 +1,18 @@
 [build]
-  command = "npm run build"
+  command = "npm install --platform=linux --arch=x64 sharp && npm run build"
   publish = ".next"
 
 [build.environment]
   NODE_VERSION = "20.9.0"
   NPM_VERSION = "10.9.1"
   SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
-  SHARP_SKIP_PLATFORM_LIBVIPS = "1"
   NETLIFY_USE_YARN = "false"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[functions]
+  node_bundler = "esbuild"
 
 [[redirects]]
   from = "/admin/*"
