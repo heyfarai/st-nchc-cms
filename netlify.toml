@@ -2,14 +2,36 @@
   command = "SHARP_IGNORE_GLOBAL_LIBVIPS=1 pnpm install && pnpm run build"
   publish = ".next"
 
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.images]
+  compress = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[plugins.inputs]
+  cache = true
+  enable_memory_cache = true
+  memory_cache_key = "sharp"
+
 [build.environment]
   NODE_VERSION = "20.9.0"
   PNPM_VERSION = "10.15.1"
   SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
   NETLIFY_USE_PNPM = "true"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
 
 [functions]
   node_bundler = "esbuild"
