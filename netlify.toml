@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm install && pnpm install --platform=linux --arch=x64 sharp && pnpm run build"
+  command = "SHARP_IGNORE_GLOBAL_LIBVIPS=1 pnpm install && pnpm run build"
   publish = ".next"
 
 [build.environment]
